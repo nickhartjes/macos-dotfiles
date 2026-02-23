@@ -1,15 +1,26 @@
 # macOS Dotfiles
 
-GNU Stow-managed dotfiles and Homebrew setup for macOS (Apple Silicon). Catppuccin Mocha themed.
+GNU Stow-managed dotfiles and Homebrew setup for macOS (Apple Silicon). Tokyo Night themed.
+
+## Make It Your Own
+
+This repo is meant to be forked and customized:
+
+1. **Fork** this repo on GitHub
+2. Edit the `Brewfile` to add/remove packages you want
+3. Tweak configs under `dotfiles/` to your liking (shell aliases, editor settings, theme, etc.)
+4. Update the Bitwarden items with your own secrets (git identity, GPG key, AWS credentials)
+5. Follow the Quick Start below to bootstrap your Mac
 
 ## Quick Start
 
 ```sh
-# 1. Clone
-git clone <repo> ~/.dotfiles && cd ~/.dotfiles
+# 1. Fork this repo, then clone your fork
+# Use HTTPS on a fresh Mac (no SSH keys yet), switch to SSH later
+git clone https://github.com/<your-user>/mac-dotfiles.git ~/.mac-dotfiles && cd ~/.mac-dotfiles
 
 # 2. Bootstrap (installs Homebrew, packages, links dotfiles, SDKs, macOS defaults)
-just install
+sh bootstrap.sh
 
 # 3. Set up secrets from Bitwarden
 bw login
@@ -20,7 +31,9 @@ just init
 just doctor
 ```
 
-If `BW_SESSION` is not set during `just install`, secrets are skipped — run `just init` afterwards.
+Step 2 uses `sh bootstrap.sh` directly because `just` isn't available yet on a fresh machine. After bootstrap completes, `just` is installed and all subsequent commands use it (`just install` runs the same bootstrap script).
+
+If `BW_SESSION` is not set during bootstrap, secrets are skipped — run `just init` afterwards.
 
 ## How It Works
 
@@ -29,16 +42,18 @@ The `Brewfile` is the single source of truth for all installed packages:
 - **Add a package:** add to Brewfile, run `just update`
 - **Remove a package:** delete from Brewfile, run `just update`
 
-`just update` runs `brew bundle cleanup --force`, removing anything not in the Brewfile.
+`just update` runs `brew update`, then `brew bundle` to install new additions, then `brew bundle cleanup --force` to remove anything not in the Brewfile.
 
 Dotfiles are managed with [GNU Stow](https://www.gnu.org/software/stow/) — each directory under `dotfiles/` mirrors `$HOME` and is symlinked into place. Adding a new stow package is automatic: create `dotfiles/<name>/` with the right structure and `bootstrap.sh` picks it up.
+
+Sensitive files are never committed — `.gitignore` excludes `repos.yaml` (contains repo URLs), and all secrets (`~/.gitconfig.local`, `~/.aws/credentials`) are generated at runtime by `just init` into locations outside the repo.
 
 ## Commands
 
 ```sh
-just install      # Full bootstrap (Homebrew, packages, stow, mise, defaults)
+just install      # Full bootstrap (same as sh bootstrap.sh)
 just init         # Pull secrets from Bitwarden (needs BW_SESSION)
-just update       # Update packages, remove unlisted, cleanup
+just update       # Install new packages, remove unlisted, cleanup
 just stow         # Re-link all dotfiles
 just unstow       # Unlink all dotfiles
 just defaults     # Re-apply macOS preferences
@@ -80,14 +95,14 @@ just doctor       # Verify environment health
 | `git` | Git config with GPG signing, aliases, global gitignore |
 | `starship` | Prompt with git, languages, k8s, aws, opentofu modules |
 | `mise` | SDK versions: JDK 21/17, Node LTS, Python 3.12 |
-| `ghostty` | Terminal: JetBrains Mono NF, Catppuccin Mocha |
+| `ghostty` | Terminal: JetBrains Mono NF, Tokyo Night |
 | `nvim` | LazyVim with extras for Java, Python, TypeScript, YAML, Docker, Terraform |
-| `bat` | Catppuccin Mocha theme, line numbers, git changes |
-| `lazygit` | Catppuccin Mocha theme |
-| `btop` | Catppuccin Mocha theme |
+| `bat` | Tokyo Night theme, line numbers, git changes |
+| `lazygit` | Tokyo Night theme |
+| `btop` | Tokyo Night theme |
 | `ripgrep` | Smart-case, search hidden files, exclude .git |
 | `direnv` | Silent env diff logging |
-| `k9s` | Catppuccin theme, ArgoCD plugins |
+| `k9s` | Tokyo Night skin, ArgoCD plugins |
 | `aws` | Default region (eu-central-1), JSON output |
 | `fastfetch` | System info with Apple logo, Nerd Font icons |
 
@@ -110,22 +125,22 @@ Both **zsh** and **fish** are configured side-by-side with feature parity:
 
 ### Theme
 
-Catppuccin Mocha everywhere:
+Tokyo Night everywhere:
 
 | Tool | How |
 |---|---|
-| Ghostty | `theme = Catppuccin Mocha` (built-in) |
-| Neovim | catppuccin/nvim plugin |
-| FZF | Catppuccin Mocha color palette in `FZF_DEFAULT_OPTS` |
-| Starship | `palette = "catppuccin_mocha"` |
-| bat | `--theme="Catppuccin Mocha"` |
+| Ghostty | `theme = Tokyo Night` (built-in) |
+| Neovim | folke/tokyonight.nvim plugin (night style) |
+| FZF | Tokyo Night color palette in `FZF_DEFAULT_OPTS` |
+| Starship | `palette = "tokyonight"` |
+| bat | `--theme="tokyonight_night"` |
 | btop | Custom theme file |
-| lazygit | Catppuccin Mocha blue accent |
-| k9s | Catppuccin skin |
+| lazygit | Tokyo Night blue accent |
+| k9s | Tokyo Night skin |
 
 ## Secrets Management
 
-Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https://bitwarden.com/) and pulled during `just init` — nothing sensitive is committed to the repo.
+Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https://bitwarden.com/) and pulled during `just init` — nothing sensitive is committed to the repo. Generated files (`~/.gitconfig.local`, `~/.aws/credentials`) live outside the repo, and `repos.yaml` is in `.gitignore`.
 
 ### Required Bitwarden Items
 
@@ -154,8 +169,10 @@ gpg --export-secret-keys --armor YOUR_KEY_ID
 
 ### Creating Bitwarden items via CLI
 
+> Requires jq 1.6+ (Homebrew installs the latest).
+
 ```sh
-cd ~/.dotfiles
+cd ~/.mac-dotfiles
 bw login
 export BW_SESSION=$(bw unlock --raw)
 

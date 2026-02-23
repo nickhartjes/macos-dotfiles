@@ -1,6 +1,6 @@
 k9s:
   ui:
-    skin: catppuccin
+    skin: tokyonight
 plugins:
   argocd:
     args:

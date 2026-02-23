@@ -36,5 +36,5 @@ abbr -a be ./gradlew
 abbr -a myip "curl https://ipecho.net/plain; echo"
 
 # ─── Repos ──────────────────────────────────────────────
-abbr -a repo-sync "just -f ~/.dotfiles/justfile repo-sync"
+abbr -a repo-sync "just -f ~/.mac-dotfiles/justfile repo-sync"
 abbr -a repo-log "tail -f ~/.local/state/repo-sync.log"

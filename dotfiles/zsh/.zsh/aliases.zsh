@@ -36,5 +36,5 @@ alias be="./gradlew"
 alias myip="curl https://ipecho.net/plain; echo"
 
 # Repos
-alias repo-sync="just -f ~/.dotfiles/justfile repo-sync"
+alias repo-sync="just -f ~/.mac-dotfiles/justfile repo-sync"
 alias repo-log="tail -f ~/.local/state/repo-sync.log"

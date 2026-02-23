@@ -17,7 +17,7 @@ This repo is meant to be forked and customized:
 ```sh
 # 1. Fork this repo, then clone your fork
 # Use HTTPS on a fresh Mac (no SSH keys yet), switch to SSH later
-git clone https://github.com/<your-user>/mac-dotfiles.git ~/.mac-dotfiles && cd ~/.mac-dotfiles
+git clone https://github.com/<your-user>/macos-dotfiles.git ~/.macos-dotfiles && cd ~/.macos-dotfiles
 
 # 2. Bootstrap (installs Homebrew, packages, links dotfiles, SDKs, macOS defaults)
 sh bootstrap.sh
@@ -172,7 +172,7 @@ gpg --export-secret-keys --armor YOUR_KEY_ID
 > Requires jq 1.6+ (Homebrew installs the latest).
 
 ```sh
-cd ~/.mac-dotfiles
+cd ~/.macos-dotfiles
 bw login
 export BW_SESSION=$(bw unlock --raw)
 

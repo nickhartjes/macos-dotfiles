@@ -33,4 +33,4 @@ alias npm="pnpm"
 alias be="./gradlew"
 
 # Network
-alias myip="curl http://ipecho.net/plain; echo"
+alias myip="curl https://ipecho.net/plain; echo"

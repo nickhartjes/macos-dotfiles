@@ -1,11 +1,11 @@
 # Taps
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 
 # ─── Core CLI ────────────────────────────────────────────
 brew "bitwarden-cli"
 brew "git"
 brew "gnupg"
+brew "shellcheck"
 brew "gh"
 brew "curl"
 brew "wget"
@@ -52,7 +52,6 @@ brew "opentofu"
 
 # ─── Database ────────────────────────────────────────────
 brew "pgcli"
-
 
 # ─── IDEs & Editors ─────────────────────────────────────
 cask "intellij-idea"

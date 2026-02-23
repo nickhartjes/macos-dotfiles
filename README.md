@@ -66,7 +66,7 @@ This creates `~/.gitconfig.local` from the template and imports your GPG key. Bo
 
 | Category | Packages |
 |---|---|
-| Core CLI | git, gh, curl, wget, jq, yq, ripgrep, fd, bat, eza, fzf, zoxide, tree, stow, starship, direnv, just, neovim, httpie, tldr |
+| Core CLI | bitwarden-cli, git, gnupg, shellcheck, gh, curl, wget, jq, yq, ripgrep, fd, bat, eza, fzf, zoxide, tree, stow, starship, direnv, just, neovim, httpie, tldr |
 | Shell & Plugins | antidote, fastfetch, btop, procs |
 | Dev Tools | mise, pnpm, gradle |
 | Containers & Cloud | kubectl, kubectx, helm, k9s, awscli, argocd, colima, docker (CLI, required by colima), docker-compose, kustomize, opentofu |
@@ -76,7 +76,7 @@ This creates `~/.gitconfig.local` from the template and imports your GPG key. Bo
 | Browsers | firefox, google-chrome |
 | Communication | signal, slack, telegram |
 | Productivity | raycast, rectangle, bitwarden |
-| Knowledge & Notes | anytype, obsidian |
+| Knowledge & Notes | anytype |
 | DevOps | openlens |
 | AI | claude (desktop), claude-code (CLI), codex (OpenAI CLI), lmstudio |
 | Media | spotify |
@@ -89,7 +89,7 @@ Each package under `dotfiles/` mirrors `$HOME` and is symlinked via GNU Stow:
 | Package | Files | Description |
 |---|---|---|
 | `zsh` | `.zshrc`, `.zsh_plugins.txt`, `.zsh/*.zsh` | Shell config with Antidote plugins, modular aliases/functions/completions |
-| `git` | `.gitconfig`, `.gitignore_global` | Git config with GPG signing, aliases, global gitignore |
+| `git` | `.gitconfig`, `.gitconfig.local.tpl`, `.gitignore_global` | Git config with GPG signing, aliases, global gitignore, local identity template |
 | `starship` | `.config/starship.toml` | Prompt showing git, languages, k8s, aws, terraform |
 | `mise` | `.config/mise/config.toml` | SDK versions: JDK 21, Node LTS, Python 3.12 |
 | `ghostty` | `.config/ghostty/config` | Terminal: JetBrains Mono NF, Catppuccin Mocha |
@@ -114,6 +114,8 @@ just unstow     # Unlink all dotfiles
 just defaults   # Re-apply macOS preferences
 just dump       # Export current brew state to Brewfile
 just clean      # Remove unused deps and cache
+just check      # Run shellcheck on all shell scripts
+just doctor     # Verify environment is healthy
 ```
 
 ## Bootstrap Steps

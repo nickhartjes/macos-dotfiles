@@ -5,7 +5,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 STOW_DIR="$DOTFILES_DIR/dotfiles"
-STOW_PACKAGES=$(ls -d "$STOW_DIR"/*/ 2>/dev/null | xargs -n1 basename | tr '\n' ' ')
+STOW_PACKAGES=$(find "$STOW_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ' ')
 
 # Colors
 GREEN='\033[0;32m'

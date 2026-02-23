@@ -1,61 +1,62 @@
+---
 k9s:
   ui:
     skin: tokyonight
-plugins:
-  argocd:
-    args:
-    - app
-    - sync
-    - $NAME
-    - --app-namespace
-    - $NAMESPACE
-    background: true
-    command: argocd
-    confirm: true
-    description: Sync ArgoCD Application
-    scopes:
-    - application
-    shortCut: s
-  disable-auto-sync:
-    args:
-    - patch
-    - applications
-    - -n
-    - argocd
-    - $NAME
-    - --type=json
-    - '-p=[{"op":"replace", "path": "/spec/syncPolicy", "value": {}}]'
-    background: false
-    command: kubectl
-    confirm: false
-    description: Disable argocd sync
-    scopes:
-    - apps
-    shortCut: Shift-J
-  enable-auto-sync:
-    args:
-    - patch
-    - applications
-    - -n
-    - argocd
-    - $NAME
-    - --type=merge
-    - -p={"spec":{"syncPolicy":{"automated":{"prune":true,"selfHeal":true},"syncOptions":["ApplyOutOfSyncOnly=true","CreateNamespace=true","PruneLast=true","PrunePropagationPolicy=foreground"]}}}
-    background: false
-    command: kubectl
-    confirm: false
-    description: Enable argocd sync
-    scopes:
-    - apps
-    shortCut: Shift-B
-  refresh-apps:
-    args:
-    - -c
-    - kubectl annotate applications -n argocd $NAME argocd.argoproj.io/refresh=hard
-    background: false
-    command: bash
-    confirm: false
-    description: Refresh a argocd app hard
-    scopes:
-    - apps
-    shortCut: Shift-R
+  plugins:
+    argocd:
+      args:
+        - app
+        - sync
+        - $NAME
+        - --app-namespace
+        - $NAMESPACE
+      background: true
+      command: argocd
+      confirm: true
+      description: Sync ArgoCD Application
+      scopes:
+        - application
+      shortCut: s
+    disable-auto-sync:
+      args:
+        - patch
+        - applications
+        - -n
+        - argocd
+        - $NAME
+        - --type=json
+        - '-p=[{"op":"replace", "path": "/spec/syncPolicy", "value": {}}]'
+      background: false
+      command: kubectl
+      confirm: false
+      description: Disable argocd sync
+      scopes:
+        - apps
+      shortCut: Shift-J
+    enable-auto-sync:
+      args:
+        - patch
+        - applications
+        - -n
+        - argocd
+        - $NAME
+        - --type=merge
+        - -p={"spec":{"syncPolicy":{"automated":{"prune":true,"selfHeal":true},"syncOptions":["ApplyOutOfSyncOnly=true","CreateNamespace=true","PruneLast=true","PrunePropagationPolicy=foreground"]}}}
+      background: false
+      command: kubectl
+      confirm: false
+      description: Enable argocd sync
+      scopes:
+        - apps
+      shortCut: Shift-B
+    refresh-apps:
+      args:
+        - -c
+        - kubectl annotate applications -n argocd $NAME argocd.argoproj.io/refresh=hard
+      background: false
+      command: bash
+      confirm: false
+      description: Refresh a argocd app hard
+      scopes:
+        - apps
+      shortCut: Shift-R

@@ -73,7 +73,9 @@ just defaults     # Re-apply macOS preferences
 just repo-sync    # Clone/fetch repos from repos.yaml
 just dump         # Export current brew state to Brewfile
 just clean        # Remove unused deps and cache
-just check        # Shellcheck all scripts
+just check        # Run all linters (shellcheck + yamllint, via containers)
+just lint-shell   # Lint shell scripts
+just lint-yaml    # Lint YAML files
 just doctor       # Verify environment health
 ```
 

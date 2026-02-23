@@ -1,3 +1,4 @@
+---
 k9s:
   body:
     bgColor: '#1a1b26'
@@ -57,19 +58,19 @@ k9s:
       bgColor: '#1a1b26'
       chartBgColor: '#1a1b26'
       defaultChartColors:
-      - '#9ece6a'
-      - '#f7768e'
+        - '#9ece6a'
+        - '#f7768e'
       defaultDialColors:
-      - '#9ece6a'
-      - '#f7768e'
+        - '#9ece6a'
+        - '#f7768e'
       dialBgColor: '#1a1b26'
       resourceColors:
         cpu:
-        - '#bb9af7'
-        - '#7aa2f7'
+          - '#bb9af7'
+          - '#7aa2f7'
         mem:
-        - '#e0af68'
-        - '#ff9e64'
+          - '#e0af68'
+          - '#ff9e64'
     logs:
       bgColor: '#1a1b26'
       fgColor: '#c0caf5'

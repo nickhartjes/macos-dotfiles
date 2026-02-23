@@ -54,9 +54,16 @@ clean:
 repo-sync:
     sh {{dotfiles_dir}}/repo-sync.sh
 
-# Run shellcheck on all shell scripts
-check:
-    shellcheck {{dotfiles_dir}}/bootstrap.sh {{dotfiles_dir}}/init.sh {{dotfiles_dir}}/defaults.sh {{dotfiles_dir}}/repo-sync.sh
+# Lint shell scripts (runs in container)
+lint-shell:
+    docker run --rm -v {{dotfiles_dir}}:/mnt:ro koalaman/shellcheck:stable -x /mnt/bootstrap.sh /mnt/init.sh /mnt/defaults.sh /mnt/repo-sync.sh
+
+# Lint YAML files (runs in container)
+lint-yaml:
+    docker run --rm -v {{dotfiles_dir}}:/mnt:ro cytopia/yamllint:latest -d '{extends: default, rules: {line-length: {max: 200}, truthy: disable}}' /mnt/dotfiles/k9s/.config/k9s/config.yaml /mnt/dotfiles/k9s/.config/k9s/skins/ /mnt/dotfiles/lazygit/.config/lazygit/config.yml
+
+# Run all linters
+check: lint-shell lint-yaml
 
 # Verify environment is healthy
 doctor:

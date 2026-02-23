@@ -1,4 +1,12 @@
-# macOS Dotfiles
+<p align="center">
+  <img src="assets/banner.svg" alt="macOS Dotfiles" width="100%">
+</p>
+
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-7aa2f7?style=flat-square" alt="Quick Start"></a>
+  <a href="#whats-included"><img src="https://img.shields.io/badge/What's_Included-bb9af7?style=flat-square" alt="What's Included"></a>
+  <a href="#secrets-management"><img src="https://img.shields.io/badge/Secrets-9ece6a?style=flat-square" alt="Secrets"></a>
+</p>
 
 GNU Stow-managed dotfiles and Homebrew setup for macOS (Apple Silicon). Tokyo Night themed.
 
@@ -12,12 +20,17 @@ This repo is meant to be forked and customized:
 4. Update the Bitwarden items with your own secrets (git identity, GPG key, AWS credentials)
 5. Follow the Quick Start below to bootstrap your Mac
 
+## Prerequisites
+
+- macOS (Apple Silicon)
+- A [Bitwarden](https://bitwarden.com/) account with the required items (see [Secrets Management](#secrets-management))
+
 ## Quick Start
 
 ```sh
-# 1. Fork this repo, then clone your fork
-# Use HTTPS on a fresh Mac (no SSH keys yet), switch to SSH later
-git clone https://github.com/<your-user>/macos-dotfiles.git ~/.macos-dotfiles && cd ~/.macos-dotfiles
+# 1. Fork this repo, then download and extract (no git needed on a fresh Mac)
+curl -L https://github.com/<your-user>/macos-dotfiles/archive/refs/heads/main.tar.gz | tar xz
+mv macos-dotfiles-main ~/.macos-dotfiles && cd ~/.macos-dotfiles
 
 # 2. Bootstrap (installs Homebrew, packages, links dotfiles, SDKs, macOS defaults)
 sh bootstrap.sh

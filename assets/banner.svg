@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1b26"/>
+      <stop offset="100%" stop-color="#16161e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7aa2f7"/>
+      <stop offset="50%" stop-color="#bb9af7"/>
+      <stop offset="100%" stop-color="#7dcfff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Decorative border -->
+  <rect x="2" y="2" width="896" height="296" rx="11" fill="none" stroke="url(#accent)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Terminal dots -->
+  <circle cx="36" cy="28" r="7" fill="#f7768e"/>
+  <circle cx="58" cy="28" r="7" fill="#e0af68"/>
+  <circle cx="80" cy="28" r="7" fill="#9ece6a"/>
+
+  <!-- Terminal top bar line -->
+  <line x1="20" y1="46" x2="880" y2="46" stroke="#3b4261" stroke-width="1"/>
+
+  <!-- Apple logo (simplified) -->
+  <text x="450" y="120" text-anchor="middle" font-family="monospace" font-size="48" fill="#7aa2f7" opacity="0.15"></text>
+
+  <!-- Title -->
+  <text x="450" y="145" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="42" fill="url(#accent)">macOS Dotfiles</text>
+
+  <!-- Subtitle -->
+  <text x="450" y="180" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="16" fill="#a9b1d6">Stow-managed dotfiles &amp; Homebrew setup for Apple Silicon</text>
+
+  <!-- Tags -->
+  <!-- Tokyo Night tag -->
+  <rect x="195" y="210" width="120" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
+  <text x="255" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#bb9af7">Tokyo Night</text>
+
+  <!-- Homebrew tag -->
+  <rect x="330" y="210" width="110" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
+  <text x="385" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#9ece6a">Homebrew</text>
+
+  <!-- GNU Stow tag -->
+  <rect x="455" y="210" width="110" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
+  <text x="510" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#7dcfff">GNU Stow</text>
+
+  <!-- Bitwarden tag -->
+  <rect x="580" y="210" width="120" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
+  <text x="640" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#7aa2f7">Bitwarden</text>
+
+  <!-- Prompt line -->
+  <text x="36" y="275" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="14" fill="#565f89">
+    <tspan fill="#9ece6a">❯</tspan>
+    <tspan fill="#a9b1d6"> sh bootstrap.sh</tspan>
+    <tspan fill="#565f89" font-size="14"> █</tspan>
+  </text>
+</svg>

@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@2.0.0
+        with:
+          scandir: .
+          additional_files: "bootstrap.sh init.sh defaults.sh repo-sync.sh"
+
+  yaml-lint:
+    name: YAML Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint YAML files
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: >-
+            dotfiles/k9s/.config/k9s/config.yaml
+            dotfiles/k9s/.config/k9s/skins/
+            dotfiles/lazygit/.config/lazygit/config.yml
+          config_data: |
+            extends: default
+            rules:
+              line-length:
+                max: 200
+              truthy: disable
+
+  validate-stow:
+    name: Validate Stow Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check stow package structure
+        run: |
+          errors=0
+          for pkg in dotfiles/*/; do
+            name=$(basename "$pkg")
+            # Each stow package should have at least one file
+            count=$(find "$pkg" -type f | wc -l)
+            if [ "$count" -eq 0 ]; then
+              echo "::error::Stow package '$name' is empty"
+              errors=$((errors + 1))
+            else
+              echo "✓ $name ($count files)"
+            fi
+          done
+          exit $errors
+
+  brewfile:
+    name: Validate Brewfile
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Brewfile syntax
+        run: brew bundle check --file=Brewfile --no-upgrade 2>&1 || true
+      - name: Parse Brewfile for errors
+        run: |
+          # Verify Brewfile is parseable (each line should be a valid directive)
+          while IFS= read -r line; do
+            # Skip comments and blank lines
+            [[ "$line" =~ ^[[:space:]]*# ]] && continue
+            [[ -z "${line// }" ]] && continue
+            # Valid directives: tap, brew, cask, mas, vscode
+            if ! echo "$line" | grep -qE '^(tap|brew|cask|mas|vscode)\s'; then
+              echo "::error::Invalid Brewfile line: $line"
+              exit 1
+            fi
+          done < Brewfile
+          echo "✓ Brewfile syntax valid"

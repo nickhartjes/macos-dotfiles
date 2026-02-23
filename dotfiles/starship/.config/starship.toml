@@ -1,0 +1,49 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$java\
+$nodejs\
+$python\
+$kubernetes\
+$aws\
+$terraform\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[java]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+
+[aws]
+symbol = " "
+
+[terraform]
+symbol = "󱁢 "
+
+[cmd_duration]
+min_time = 2_000
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

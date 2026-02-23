@@ -1,0 +1,11 @@
+# Font
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+window-decoration = true
+
+# Shell integration
+shell-integration = zsh

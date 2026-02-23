@@ -1,0 +1,31 @@
+[include]
+    path = ~/.gitconfig.local
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+
+[core]
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[rerere]
+    enabled = true
+
+[commit]
+    gpgsign = true
+
+[tag]
+    gpgsign = true
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

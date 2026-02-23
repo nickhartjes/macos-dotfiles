@@ -1,0 +1,15 @@
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+Aloxaf/fzf-tab
+zsh-users/zsh-syntax-highlighting
+
+# OMZ plugins
+ohmyzsh/ohmyzsh path:plugins/aws
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/gh
+ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/gradle
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/kubectx
+ohmyzsh/ohmyzsh path:plugins/vscode

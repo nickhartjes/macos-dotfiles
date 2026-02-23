@@ -19,12 +19,56 @@ brew bundle cleanup --file=Brewfile
 
 ## Quick Start
 
-```sh
-git clone <repo> && cd homebrew
-just install
+### New machine (full setup)
+
+```mermaid
+flowchart TD
+    A["git clone repo ~/.dotfiles && cd ~/.dotfiles"] --> B[just install]
+    B --> C[Install Homebrew]
+    C --> D[brew bundle]
+    D --> E{BW_SESSION set?}
+    E -- yes --> F[just init]
+    E -- no --> G[warn, continue]
+    G -.-> |run later| F
+    D --> H[Stow dotfiles]
+    D --> I[mise SDKs]
+    D --> J[macOS defaults]
+    D --> K[fzf key bindings]
+
+    F --> L[~/.gitconfig.local]
+    F --> M[GPG key import]
+    F --> N[~/.aws/credentials]
+    F --> O{PRD access?}
+    O -- yes --> P[kubeconfig: tst + prd]
+    O -- no --> Q[kubeconfig: tst only]
+
+    P --> R[just doctor]
+    Q --> R
+    H --> R
+    I --> R
+    J --> R
+    K --> R
 ```
 
-On first run, `bootstrap.sh` will attempt to pull secrets from Bitwarden. If `BW_SESSION` is not set, it skips and you can run `just init` later.
+### Step by step
+
+```sh
+# 1. Clone and enter the repo
+git clone <repo> ~/.dotfiles && cd ~/.dotfiles
+
+# 2. Run bootstrap (installs everything, links dotfiles)
+just install
+
+# 3. Log in to Bitwarden and set up secrets
+bw login
+export BW_SESSION=$(bw unlock --raw)
+just init
+
+# 4. Verify everything is healthy
+just doctor
+```
+
+If `BW_SESSION` is not set during `just install`, secrets are skipped — run `just init` afterwards. Each init step is idempotent and skips what's already configured.
 
 ## Secrets Management
 
@@ -59,7 +103,9 @@ Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https
    ```
    Copy the full output (including `-----BEGIN PGP PRIVATE KEY BLOCK-----`) into the note.
 
-4. Log in and run init:
+4. *(Optional)* Create a Bitwarden secure note named **`dotfiles/repos`** with your `repos.yaml` content (list of git repos to clone). See `repos.yaml.example` for the format.
+
+5. Log in and run init:
    ```sh
    bw login
    export BW_SESSION=$(bw unlock --raw)
@@ -74,6 +120,7 @@ Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https
 | GPG key | Imports into keyring | Skips if already imported |
 | AWS credentials | `~/.aws/credentials` with TST (+ PRD if available) | Skips if exists |
 | Kubeconfig | Adds `tst` and `prd` EKS contexts | Safe to re-run |
+| Repos | `repos.yaml` from Bitwarden note | Skips if exists |
 
 ## What's Included
 
@@ -126,6 +173,7 @@ Each package under `dotfiles/` mirrors `$HOME` and is symlinked via GNU Stow:
 just init       # Pull secrets from Bitwarden (run once, needs BW_SESSION)
 just install    # Full bootstrap (Homebrew, brew bundle, stow, mise, defaults, fzf)
 just update     # Update packages, remove unlisted, cleanup
+just repo-sync  # Clone or fetch all repositories from repos.yaml
 just stow       # Re-link all dotfiles
 just unstow     # Unlink all dotfiles
 just defaults   # Re-apply macOS preferences
@@ -169,6 +217,8 @@ homebrew/
 ├── bootstrap.sh
 ├── init.sh
 ├── defaults.sh
+├── repo-sync.sh
+├── repos.yaml.example
 ├── justfile
 └── dotfiles/
     ├── aws/.aws/config

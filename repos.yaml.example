@@ -1,0 +1,11 @@
+# Repositories to clone/fetch into ~/projects/<folder>/
+# Copy this file to repos.yaml and edit with your repos:
+#   cp repos.yaml.example repos.yaml
+
+personal:
+  - git@github.com:your-username/dotfiles.git
+  - git@github.com:your-username/notes.git
+
+work:
+  - git@github.com:your-org/project-a.git
+  - git@github.com:your-org/project-b.git

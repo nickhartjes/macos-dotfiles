@@ -34,3 +34,7 @@ alias be="./gradlew"
 
 # Network
 alias myip="curl https://ipecho.net/plain; echo"
+
+# Repos
+alias repo-sync="sh ~/.dotfiles/repo-sync.sh"
+alias repo-log="tail -f ~/.local/state/repo-sync.log"

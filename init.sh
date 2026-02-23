@@ -163,4 +163,18 @@ else
   warn "aws CLI not found, skipping kubeconfig setup"
 fi
 
+# ─── repos.yaml ───────────────────────────────────────────
+if [ -f "$DOTFILES_DIR/repos.yaml" ]; then
+  ok "repos.yaml already exists, skipping"
+else
+  REPOS_YAML=$(bw get notes "dotfiles/repos" 2>/dev/null) || true
+
+  if [ -n "$REPOS_YAML" ]; then
+    echo "$REPOS_YAML" > "$DOTFILES_DIR/repos.yaml"
+    ok "Created repos.yaml from Bitwarden"
+  else
+    warn "No 'dotfiles/repos' note found in Bitwarden, skipping repos.yaml"
+  fi
+fi
+
 ok "Init complete"

@@ -50,9 +50,13 @@ clean:
     brew cleanup
     brew autoremove
 
+# Clone or fetch all repositories defined in repos.yaml
+repo-sync:
+    sh {{dotfiles_dir}}/repo-sync.sh
+
 # Run shellcheck on all shell scripts
 check:
-    shellcheck {{dotfiles_dir}}/bootstrap.sh {{dotfiles_dir}}/init.sh {{dotfiles_dir}}/defaults.sh
+    shellcheck {{dotfiles_dir}}/bootstrap.sh {{dotfiles_dir}}/init.sh {{dotfiles_dir}}/defaults.sh {{dotfiles_dir}}/repo-sync.sh
 
 # Verify environment is healthy
 doctor:

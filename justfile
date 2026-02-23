@@ -4,7 +4,7 @@ set dotenv-load := false
 
 dotfiles_dir := justfile_directory()
 stow_dir := dotfiles_dir / "dotfiles"
-stow_packages := "zsh git starship mise ghostty bat"
+stow_packages := "zsh git starship mise ghostty bat k9s aws"
 
 # Set up local secrets from Bitwarden (run once on a new machine)
 init:

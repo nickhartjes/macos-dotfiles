@@ -5,7 +5,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 STOW_DIR="$DOTFILES_DIR/dotfiles"
-STOW_PACKAGES="zsh git starship mise ghostty bat"
+STOW_PACKAGES="zsh git starship mise ghostty bat k9s aws"
 
 # Colors
 GREEN='\033[0;32m'
@@ -33,12 +33,8 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 ok "Brew bundle complete"
 
 # ─── 3. Init (secrets from Bitwarden) ──────────────────
-if [ -f "$HOME/.gitconfig.local" ]; then
-  ok "Local secrets already configured"
-else
-  info "Running init to set up local secrets..."
-  sh "$DOTFILES_DIR/init.sh" || warn "Init skipped — run 'just init' later to configure secrets"
-fi
+info "Running init to set up local secrets..."
+sh "$DOTFILES_DIR/init.sh" || warn "Init skipped — run 'just init' later to configure secrets"
 
 # ─── 4. Stow ────────────────────────────────────────────
 info "Linking dotfiles with stow..."

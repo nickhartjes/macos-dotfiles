@@ -28,7 +28,7 @@ On first run, `bootstrap.sh` will attempt to pull secrets from Bitwarden. If `BW
 
 ## Secrets Management
 
-Secrets (git identity, GPG key) are stored in [Bitwarden](https://bitwarden.com/) and pulled during init — nothing sensitive is committed to the repo.
+Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https://bitwarden.com/) and pulled during init — nothing sensitive is committed to the repo.
 
 ### Setup
 
@@ -39,11 +39,19 @@ Secrets (git identity, GPG key) are stored in [Bitwarden](https://bitwarden.com/
 
 2. Create a Bitwarden item named **`dotfiles`** with these custom fields:
 
-   | Field | Value |
-   |---|---|
-   | `GIT_USER_NAME` | Your Name |
-   | `GIT_USER_EMAIL` | you@example.com |
-   | `GIT_SIGNING_KEY` | Your GPG key ID |
+   | Field | Value | Required |
+   |---|---|---|
+   | `GIT_USER_NAME` | Your Name | Yes |
+   | `GIT_USER_EMAIL` | you@example.com | Yes |
+   | `GIT_SIGNING_KEY` | Your GPG key ID | Yes |
+   | `AWS_PROFILE_TST` | TST profile name (e.g. `tst`) | Yes |
+   | `AWS_ACCESS_KEY_ID_TST` | TST access key | Yes |
+   | `AWS_SECRET_ACCESS_KEY_TST` | TST secret key | Yes |
+   | `AWS_PROFILE_PRD` | PRD profile name (e.g. `prd`) | No |
+   | `AWS_ACCESS_KEY_ID_PRD` | PRD access key | No |
+   | `AWS_SECRET_ACCESS_KEY_PRD` | PRD secret key | No |
+
+   PRD fields are optional — not everyone has production access. If missing, the PRD profile and kubeconfig are skipped.
 
 3. *(Optional)* Create a Bitwarden secure note named **`dotfiles/gpg`** with your armored GPG private key as the note content:
    ```sh
@@ -58,7 +66,14 @@ Secrets (git identity, GPG key) are stored in [Bitwarden](https://bitwarden.com/
    just init
    ```
 
-This creates `~/.gitconfig.local` from the template and imports your GPG key. Both are idempotent — re-running skips if already configured.
+### What init does
+
+| Step | Output | Idempotent |
+|---|---|---|
+| Git identity | `~/.gitconfig.local` from template | Skips if exists |
+| GPG key | Imports into keyring | Skips if already imported |
+| AWS credentials | `~/.aws/credentials` with TST (+ PRD if available) | Skips if exists |
+| Kubeconfig | Adds `tst` and `prd` EKS contexts | Safe to re-run |
 
 ## What's Included
 
@@ -94,6 +109,8 @@ Each package under `dotfiles/` mirrors `$HOME` and is symlinked via GNU Stow:
 | `mise` | `.config/mise/config.toml` | SDK versions: JDK 21, Node LTS, Python 3.12 |
 | `ghostty` | `.config/ghostty/config` | Terminal: JetBrains Mono NF, Catppuccin Mocha |
 | `bat` | `.config/bat/config` | line numbers |
+| `k9s` | `.config/k9s/config.yaml`, `skins/catppuccin.yaml` | Catppuccin theme, ArgoCD and cert-manager plugins |
+| `aws` | `.aws/config` | Default region (eu-central-1), credentials managed by init |
 
 ### Shell Setup
 
@@ -154,11 +171,15 @@ homebrew/
 ├── defaults.sh
 ├── justfile
 └── dotfiles/
+    ├── aws/.aws/config
+    ├── aws/.aws/credentials.tpl
     ├── bat/.config/bat/config
     ├── ghostty/.config/ghostty/config
     ├── git/.gitconfig
     ├── git/.gitconfig.local.tpl
     ├── git/.gitignore_global
+    ├── k9s/.config/k9s/config.yaml
+    ├── k9s/.config/k9s/skins/catppuccin.yaml
     ├── mise/.config/mise/config.toml
     ├── starship/.config/starship.toml
     └── zsh/

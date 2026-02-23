@@ -117,6 +117,7 @@ Secrets (git identity, GPG key, AWS credentials) are stored in [Bitwarden](https
 Instead of using the web vault, you can create all items from the terminal:
 
 ```sh
+cd ~/homebrew  # run from the repo root
 bw login
 export BW_SESSION=$(bw unlock --raw)
 
@@ -124,23 +125,24 @@ export BW_SESSION=$(bw unlock --raw)
 bw get template item | jq '
   .name = "dotfiles" |
   .type = 1 |
+  .login = {} |
   .fields = [
-    {.name = "GIT_USER_NAME", .value = "Your Name", .type = 0},
-    {.name = "GIT_USER_EMAIL", .value = "you@example.com", .type = 0},
-    {.name = "GIT_SIGNING_KEY", .value = "YOUR_GPG_KEY_ID", .type = 0},
-    {.name = "AWS_PROFILE_TST", .value = "tst", .type = 0},
-    {.name = "AWS_ACCESS_KEY_ID_TST", .value = "AKIA...", .type = 1},
-    {.name = "AWS_SECRET_ACCESS_KEY_TST", .value = "wJal...", .type = 1},
-    {.name = "AWS_PROFILE_PRD", .value = "prd", .type = 0},
-    {.name = "AWS_ACCESS_KEY_ID_PRD", .value = "AKIA...", .type = 1},
-    {.name = "AWS_SECRET_ACCESS_KEY_PRD", .value = "wJal...", .type = 1}
+    {name: "GIT_USER_NAME", value: "Your Name", type: 0},
+    {name: "GIT_USER_EMAIL", value: "you@example.com", type: 0},
+    {name: "GIT_SIGNING_KEY", value: "YOUR_GPG_KEY_ID", type: 0},
+    {name: "AWS_PROFILE_TST", value: "tst", type: 0},
+    {name: "AWS_ACCESS_KEY_ID_TST", value: "AKIA...", type: 1},
+    {name: "AWS_SECRET_ACCESS_KEY_TST", value: "wJal...", type: 1},
+    {name: "AWS_PROFILE_PRD", value: "prd", type: 0},
+    {name: "AWS_ACCESS_KEY_ID_PRD", value: "AKIA...", type: 1},
+    {name: "AWS_SECRET_ACCESS_KEY_PRD", value: "wJal...", type: 1}
   ]' | bw encode | bw create item
 
 # 2. GPG private key (optional)
 bw get template item | jq '
   .name = "dotfiles/gpg" |
   .type = 2 |
-  .secureNote = {.type = 0} |
+  .secureNote = {type: 0} |
   .notes = "PASTE_ARMORED_GPG_KEY_HERE"
 ' | bw encode | bw create item
 
@@ -148,7 +150,7 @@ bw get template item | jq '
 bw get template item | jq --rawfile notes repos.yaml.example '
   .name = "dotfiles/repos" |
   .type = 2 |
-  .secureNote = {.type = 0} |
+  .secureNote = {type: 0} |
   .notes = $notes
 ' | bw encode | bw create item
 ```

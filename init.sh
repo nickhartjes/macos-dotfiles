@@ -51,7 +51,7 @@ BW_ITEM=$(bw get item "dotfiles" 2>/dev/null) || {
 
 # ─── .gitconfig.local ──────────────────────────────────────
 if [ -f "$HOME/.gitconfig.local" ]; then
-  ok "~/.gitconfig.local already exists, skipping"
+  ok "$HOME/.gitconfig.local already exists, skipping"
 else
   GIT_USER_NAME=$(echo "$BW_ITEM" | jq -r '.fields[] | select(.name=="GIT_USER_NAME") | .value')
   GIT_USER_EMAIL=$(echo "$BW_ITEM" | jq -r '.fields[] | select(.name=="GIT_USER_EMAIL") | .value')
@@ -71,7 +71,11 @@ GPG_KEY=$(bw get notes "dotfiles/gpg" 2>/dev/null) || true
 
 if [ -n "$GPG_KEY" ]; then
   if command -v gpg >/dev/null 2>&1; then
-    echo "$GPG_KEY" | gpg --import 2>/dev/null && ok "GPG key imported" || warn "GPG key import failed (may already exist)"
+    if echo "$GPG_KEY" | gpg --import 2>/dev/null; then
+      ok "GPG key imported"
+    else
+      warn "GPG key import failed (may already exist)"
+    fi
   else
     warn "gpg not found, skipping GPG key import"
   fi

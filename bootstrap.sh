@@ -76,15 +76,19 @@ else
 fi
 
 # ─── Summary ─────────────────────────────────────────────
+FORMULAS=$(brew list --formula | wc -l | tr -d ' ')
+CASKS=$(brew list --cask | wc -l | tr -d ' ')
+SDKS=$(mise list 2>/dev/null | wc -l | tr -d ' ')
+
 printf "\n"
-printf "${GREEN}════════════════════════════════════════${NC}\n"
-printf "${GREEN}  Bootstrap complete!${NC}\n"
-printf "${GREEN}════════════════════════════════════════${NC}\n"
+printf "%s════════════════════════════════════════%s\n" "$GREEN" "$NC"
+printf "%s  Bootstrap complete!%s\n" "$GREEN" "$NC"
+printf "%s════════════════════════════════════════%s\n" "$GREEN" "$NC"
 printf "\n"
-printf "  Homebrew packages:  $(brew list --formula | wc -l | tr -d ' ') formulas, $(brew list --cask | wc -l | tr -d ' ') casks\n"
+printf "  Homebrew packages:  %s formulas, %s casks\n" "$FORMULAS" "$CASKS"
 printf "  Stow packages:     %s\n" "$STOW_PACKAGES"
-printf "  mise SDKs:         $(mise list 2>/dev/null | wc -l | tr -d ' ') tools\n"
+printf "  mise SDKs:         %s tools\n" "$SDKS"
 printf "  macOS defaults:    applied\n"
 printf "\n"
-printf "  ${YELLOW}Restart your terminal to activate all changes.${NC}\n"
+printf "  %sRestart your terminal to activate all changes.%s\n" "$YELLOW" "$NC"
 printf "\n"

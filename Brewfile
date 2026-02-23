@@ -34,6 +34,7 @@ brew "btop"           # Interactive process viewer
 brew "procs"          # Modern ps replacement
 
 # ─── Dev Tools ───────────────────────────────────────────
+brew "lazygit"        # Terminal UI for git
 brew "mise"           # Polyglot runtime manager
 brew "pnpm"           # Fast Node.js package manager
 brew "gradle"         # JVM build tool

@@ -2,6 +2,12 @@
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# ─── Environment ────────────────────────────────────────
+export EDITOR="nvim"
+export VISUAL="nvim"
+export GPG_TTY=$(tty)
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
+
 # ─── History ─────────────────────────────────────────────
 HISTSIZE=5000
 HISTFILE="$HOME/.zsh_history"
@@ -31,10 +37,11 @@ export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --follow --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d --exclude .git --follow --hidden"
 export FZF_DEFAULT_OPTS="
-  --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
-  --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
-  --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
-  --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+  --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+  --color=selected-bg:#45475a
+  --color=border:#6c7086,label:#cdd6f4
   --preview='bat --color=always -n {}'
   --bind 'ctrl-/:toggle-preview'
 "
@@ -47,4 +54,4 @@ eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 
 # ─── Fastfetch ───────────────────────────────────────────
-fastfetch
+[[ -o interactive ]] && fastfetch

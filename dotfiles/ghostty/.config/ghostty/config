@@ -7,5 +7,5 @@ window-padding-x = 4
 window-padding-y = 4
 window-decoration = true
 
-# Shell integration
-shell-integration = zsh
+# Theme
+theme = Catppuccin Mocha

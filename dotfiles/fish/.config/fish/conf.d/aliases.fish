@@ -7,7 +7,7 @@ alias grep="rg"
 alias htop="btop"
 alias ps="procs"
 alias cat="bat"
-alias ls="eza"
+alias ls="eza --icons --group-directories-first"
 
 # ─── Kubernetes ──────────────────────────────────────────
 abbr -a k kubectl
@@ -23,8 +23,8 @@ abbr -a gl "git log --oneline"
 # ─── Docker ──────────────────────────────────────────────
 abbr -a dc "docker compose"
 
-# ─── Terraform ───────────────────────────────────────────
-abbr -a tf terraform
+# ─── OpenTofu ────────────────────────────────────────────
+abbr -a tf tofu
 
 # ─── Node ────────────────────────────────────────────────
 alias npm="pnpm"
@@ -36,5 +36,5 @@ abbr -a be ./gradlew
 abbr -a myip "curl https://ipecho.net/plain; echo"
 
 # ─── Repos ──────────────────────────────────────────────
-abbr -a repo-sync "sh ~/.dotfiles/repo-sync.sh"
+abbr -a repo-sync "just -f ~/.dotfiles/justfile repo-sync"
 abbr -a repo-log "tail -f ~/.local/state/repo-sync.log"

@@ -5,7 +5,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 STOW_DIR="$DOTFILES_DIR/dotfiles"
-STOW_PACKAGES="zsh fish git starship mise ghostty bat k9s aws fastfetch nvim"
+STOW_PACKAGES=$(ls -d "$STOW_DIR"/*/ 2>/dev/null | xargs -n1 basename | tr '\n' ' ')
 
 # Colors
 GREEN='\033[0;32m'

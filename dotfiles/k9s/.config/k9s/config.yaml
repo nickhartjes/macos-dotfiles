@@ -16,28 +16,6 @@ plugins:
     scopes:
     - application
     shortCut: s
-  cert-renew:
-    args:
-    - -c
-    - cmctl renew --context $CONTEXT -n $NAMESPACE $NAME |& less
-    background: false
-    command: bash
-    confirm: false
-    description: Certificate renew
-    scopes:
-    - certificates
-    shortCut: Shift-R
-  cert-status:
-    args:
-    - -c
-    - cmctl status certificate --context $CONTEXT -n $NAMESPACE $NAME |& less
-    background: false
-    command: bash
-    confirm: false
-    description: Certificate status
-    scopes:
-    - certificates
-    shortCut: Shift-S
   disable-auto-sync:
     args:
     - patch
@@ -81,14 +59,3 @@ plugins:
     scopes:
     - apps
     shortCut: Shift-R
-  secret-inspect:
-    args:
-    - -c
-    - cmctl inspect secret --context $CONTEXT -n $NAMESPACE $NAME |& less
-    background: false
-    command: bash
-    confirm: false
-    description: Inspect secret
-    scopes:
-    - secrets
-    shortCut: Shift-I

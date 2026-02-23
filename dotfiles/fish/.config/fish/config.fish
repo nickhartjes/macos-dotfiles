@@ -2,8 +2,14 @@
 fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
 fish_add_path $HOME/.local/bin
 
-# ─── History ─────────────────────────────────────────────
-set -g fish_history_size 5000
+# ─── Environment ────────────────────────────────────────
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx GPG_TTY (tty)
+set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
+
+# ─── Shell ──────────────────────────────────────────────
+set -g fish_greeting
 
 # ─── Fisher bootstrap ───────────────────────────────────
 if not functions -q fisher

@@ -1,6 +1,7 @@
 #!/bin/sh
 # macOS defaults — idempotent, safe to re-run
 # Run: sh defaults.sh
+set -e
 
 echo "Applying macOS defaults..."
 

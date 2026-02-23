@@ -7,7 +7,7 @@ alias grep="rg"
 alias htop="btop"
 alias ps="procs"
 alias cat="bat"
-alias ls="eza"
+alias ls="eza --icons --group-directories-first"
 
 # Kubernetes
 alias k="kubectl"
@@ -23,8 +23,8 @@ alias gl="git log --oneline"
 # Docker
 alias dc="docker compose"
 
-# Terraform
-alias tf="terraform"
+# OpenTofu
+alias tf="tofu"
 
 # Node
 alias npm="pnpm"
@@ -36,5 +36,5 @@ alias be="./gradlew"
 alias myip="curl https://ipecho.net/plain; echo"
 
 # Repos
-alias repo-sync="sh ~/.dotfiles/repo-sync.sh"
+alias repo-sync="just -f ~/.dotfiles/justfile repo-sync"
 alias repo-log="tail -f ~/.local/state/repo-sync.log"

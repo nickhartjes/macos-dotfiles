@@ -5,7 +5,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 STOW_DIR="$DOTFILES_DIR/dotfiles"
-STOW_PACKAGES="zsh git starship mise ghostty bat k9s aws"
+STOW_PACKAGES="zsh fish git starship mise ghostty bat k9s aws fastfetch"
 
 # Colors
 GREEN='\033[0;32m'

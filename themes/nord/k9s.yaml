@@ -1,0 +1,101 @@
+---
+k9s:
+  body:
+    bgColor: '#2e3440'
+    fgColor: '#eceff4'
+    logoColor: '#81a1c1'
+  dialog:
+    bgColor: '#434c5e'
+    buttonBgColor: '#4c566a'
+    buttonFgColor: '#2e3440'
+    buttonFocusBgColor: '#b48ead'
+    buttonFocusFgColor: '#2e3440'
+    fgColor: '#ebcb8b'
+    fieldFgColor: '#eceff4'
+    labelFgColor: '#e5e9f0'
+  frame:
+    border:
+      fgColor: '#81a1c1'
+      focusColor: '#b48ead'
+    crumbs:
+      activeColor: '#88c0d0'
+      bgColor: '#d08770'
+      fgColor: '#2e3440'
+    menu:
+      fgColor: '#eceff4'
+      keyColor: '#81a1c1'
+      numKeyColor: '#d08770'
+    status:
+      addColor: '#a3be8c'
+      completedColor: '#4c566a'
+      errorColor: '#bf616a'
+      highlightColor: '#88c0d0'
+      killColor: '#b48ead'
+      modifyColor: '#81a1c1'
+      newColor: '#88c0d0'
+      pendingColor: '#d08770'
+    title:
+      bgColor: '#2e3440'
+      counterColor: '#ebcb8b'
+      fgColor: '#8fbcbb'
+      filterColor: '#a3be8c'
+      highlightColor: '#b48ead'
+  help:
+    bgColor: '#2e3440'
+    fgColor: '#eceff4'
+    keyColor: '#81a1c1'
+    numKeyColor: '#d08770'
+    sectionColor: '#a3be8c'
+  info:
+    fgColor: '#d08770'
+    sectionColor: '#eceff4'
+  prompt:
+    bgColor: '#2e3440'
+    fgColor: '#eceff4'
+    suggestColor: '#81a1c1'
+  views:
+    charts:
+      bgColor: '#2e3440'
+      chartBgColor: '#2e3440'
+      defaultChartColors:
+        - '#a3be8c'
+        - '#bf616a'
+      defaultDialColors:
+        - '#a3be8c'
+        - '#bf616a'
+      dialBgColor: '#2e3440'
+      resourceColors:
+        cpu:
+          - '#b48ead'
+          - '#81a1c1'
+        mem:
+          - '#ebcb8b'
+          - '#d08770'
+    logs:
+      bgColor: '#2e3440'
+      fgColor: '#eceff4'
+      indicator:
+        bgColor: '#2e3440'
+        fgColor: '#81a1c1'
+        toggleOffColor: '#e5e9f0'
+        toggleOnColor: '#a3be8c'
+    table:
+      bgColor: '#2e3440'
+      cursorBgColor: '#3b4252'
+      cursorFgColor: '#2e3440'
+      fgColor: '#eceff4'
+      header:
+        bgColor: '#2e3440'
+        fgColor: '#ebcb8b'
+        sorterColor: '#88c0d0'
+      markColor: '#e5e9f0'
+    xray:
+      bgColor: '#2e3440'
+      cursorColor: '#3b4252'
+      cursorTextColor: '#2e3440'
+      fgColor: '#eceff4'
+      graphicColor: '#b48ead'
+    yaml:
+      colonColor: '#e5e9f0'
+      keyColor: '#81a1c1'
+      valueColor: '#eceff4'

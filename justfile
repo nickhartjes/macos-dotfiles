@@ -54,16 +54,9 @@ clean:
 repo-sync:
     sh {{dotfiles_dir}}/repo-sync.sh
 
-# Lint shell scripts (runs in container)
-lint-shell:
-    docker run --rm -v {{dotfiles_dir}}:/mnt:ro koalaman/shellcheck:stable -x /mnt/bootstrap.sh /mnt/init.sh /mnt/defaults.sh /mnt/repo-sync.sh
-
-# Lint YAML files (runs in container)
-lint-yaml:
-    docker run --rm -v {{dotfiles_dir}}:/mnt:ro cytopia/yamllint:latest -d '{extends: default, rules: {line-length: {max: 200}, truthy: disable}}' /mnt/dotfiles/k9s/.config/k9s/config.yaml /mnt/dotfiles/k9s/.config/k9s/skins/ /mnt/dotfiles/lazygit/.config/lazygit/config.yml
-
-# Run all linters
-check: lint-shell lint-yaml
+# Run all linters via MegaLinter (shellcheck + yamllint)
+lint:
+    docker run --rm -v {{dotfiles_dir}}:/tmp/lint:rw oxsecurity/megalinter-cupcake:v8 mega-linter-runner
 
 # Verify environment is healthy
 doctor:
@@ -101,3 +94,24 @@ doctor:
         fi; \
     done; \
     [ "$all_linked" = true ] && ok "All stow packages linked"
+
+# Switch terminal theme across all tools
+theme name="":
+    #!/bin/sh
+    if [ -z "{{name}}" ]; then \
+        active=""; \
+        if [ -f "{{dotfiles_dir}}/themes/_active" ]; then \
+            active=$(cat "{{dotfiles_dir}}/themes/_active"); \
+        fi; \
+        selected=$(ls -d "{{dotfiles_dir}}"/themes/*/  2>/dev/null \
+            | xargs -I{} basename {} \
+            | fzf --prompt="Theme: " \
+                  --header="Current: $active" \
+                  --preview="yq '.name' {{dotfiles_dir}}/themes/{}/theme.yaml" \
+                  --preview-window=up:1); \
+        if [ -n "$selected" ]; then \
+            sh "{{dotfiles_dir}}/scripts/theme.sh" "$selected"; \
+        fi; \
+    else \
+        sh "{{dotfiles_dir}}/scripts/theme.sh" "{{name}}"; \
+    fi

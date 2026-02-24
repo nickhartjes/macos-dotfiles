@@ -1,4 +1,5 @@
 name: Gruvbox Dark
+variant: dark
 
 ghostty: "GruvboxDark"
 bat: "gruvbox-dark"

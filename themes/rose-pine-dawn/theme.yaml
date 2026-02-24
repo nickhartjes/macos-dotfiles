@@ -1,0 +1,71 @@
+name: Rosé Pine Dawn
+variant: light
+
+ghostty: "rose-pine-dawn"
+bat: "rose-pine-dawn"
+btop: "rose-pine-dawn"
+k9s: "rose-pine-dawn"
+
+nvim:
+  plugin: "rose-pine/neovim"
+  opts: 'dark_variant = "dawn"'
+  colorscheme: "rose-pine-dawn"
+
+starship:
+  palette_name: "rose_pine_dawn"
+  colors:
+    rosewater: "#d7827e"
+    flamingo: "#d7827e"
+    pink: "#907aa9"
+    mauve: "#907aa9"
+    red: "#b4637a"
+    maroon: "#b4637a"
+    peach: "#ea9d34"
+    yellow: "#ea9d34"
+    green: "#286983"
+    teal: "#56949f"
+    sky: "#56949f"
+    sapphire: "#56949f"
+    blue: "#286983"
+    lavender: "#907aa9"
+    text: "#575279"
+    subtext1: "#797593"
+    subtext0: "#797593"
+    overlay2: "#9893a5"
+    overlay1: "#9893a5"
+    overlay0: "#cecacd"
+    surface2: "#dfdad9"
+    surface1: "#f2e9e1"
+    surface0: "#f4ede8"
+    base: "#faf4ed"
+    mantle: "#fffaf3"
+    crust: "#f2e9e1"
+
+lazygit:
+  activeBorderColor: "#286983"
+  inactiveBorderColor: "#9893a5"
+  optionsTextColor: "#286983"
+  selectedLineBgColor: "#f2e9e1"
+  cherryPickedCommitBgColor: "#dfdad9"
+  cherryPickedCommitFgColor: "#286983"
+  unstagedChangesColor: "#b4637a"
+  defaultFgColor: "#575279"
+  searchingActiveBorderColor: "#ea9d34"
+  authorColor: "#907aa9"
+
+fzf:
+  bg_plus: "#f2e9e1"
+  bg: "#faf4ed"
+  spinner: "#907aa9"
+  hl: "#b4637a"
+  fg: "#575279"
+  header: "#b4637a"
+  info: "#286983"
+  pointer: "#907aa9"
+  marker: "#56949f"
+  fg_plus: "#575279"
+  prompt: "#286983"
+  hl_plus: "#b4637a"
+  selected_bg: "#dfdad9"
+  border: "#9893a5"
+  label: "#575279"

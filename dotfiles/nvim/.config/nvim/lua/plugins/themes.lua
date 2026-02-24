@@ -7,4 +7,6 @@ return {
   { "shaunsingh/nord.nvim" },
   { "Mofiqul/dracula.nvim" },
   { "rose-pine/neovim", name = "rose-pine" },
+  { "rebelot/kanagawa.nvim" },
+  { "sainnhe/everforest" },
 }

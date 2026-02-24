@@ -1,0 +1,71 @@
+name: Everforest Dark
+variant: dark
+
+ghostty: "Everforest Dark Medium"
+bat: "base16"
+btop: "everforest-dark"
+k9s: "everforest-dark"
+
+nvim:
+  plugin: "sainnhe/everforest"
+  opts: 'background = "medium"'
+  colorscheme: "everforest"
+
+starship:
+  palette_name: "everforest_dark"
+  colors:
+    rosewater: "#e69875"
+    flamingo: "#e69875"
+    pink: "#d699b6"
+    mauve: "#d699b6"
+    red: "#e67e80"
+    maroon: "#e67e80"
+    peach: "#e69875"
+    yellow: "#dbbc7f"
+    green: "#a7c080"
+    teal: "#83c092"
+    sky: "#7fbbb3"
+    sapphire: "#7fbbb3"
+    blue: "#7fbbb3"
+    lavender: "#d699b6"
+    text: "#d3c6aa"
+    subtext1: "#9da9a0"
+    subtext0: "#859289"
+    overlay2: "#7a8478"
+    overlay1: "#56635f"
+    overlay0: "#4f585e"
+    surface2: "#475258"
+    surface1: "#3d484d"
+    surface0: "#343f44"
+    base: "#2d353b"
+    mantle: "#2d353b"
+    crust: "#2d353b"
+
+lazygit:
+  activeBorderColor: "#7fbbb3"
+  inactiveBorderColor: "#4f585e"
+  optionsTextColor: "#7fbbb3"
+  selectedLineBgColor: "#343f44"
+  cherryPickedCommitBgColor: "#3d484d"
+  cherryPickedCommitFgColor: "#7fbbb3"
+  unstagedChangesColor: "#e67e80"
+  defaultFgColor: "#d3c6aa"
+  searchingActiveBorderColor: "#dbbc7f"
+  authorColor: "#d699b6"
+
+fzf:
+  bg_plus: "#343f44"
+  bg: "#2d353b"
+  spinner: "#d699b6"
+  hl: "#e67e80"
+  fg: "#d3c6aa"
+  header: "#e67e80"
+  info: "#7fbbb3"
+  pointer: "#d699b6"
+  marker: "#a7c080"
+  fg_plus: "#d3c6aa"
+  prompt: "#7fbbb3"
+  hl_plus: "#e67e80"
+  selected_bg: "#3d484d"
+  border: "#56635f"
+  label: "#d3c6aa"

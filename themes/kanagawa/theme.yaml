@@ -1,0 +1,71 @@
+name: Kanagawa
+variant: dark
+
+ghostty: "Kanagawa Wave"
+bat: "base16"
+btop: "kanagawa"
+k9s: "kanagawa"
+
+nvim:
+  plugin: "rebelot/kanagawa.nvim"
+  opts: 'theme = "wave"'
+  colorscheme: "kanagawa"
+
+starship:
+  palette_name: "kanagawa"
+  colors:
+    rosewater: "#D27E99"
+    flamingo: "#D27E99"
+    pink: "#957FB8"
+    mauve: "#957FB8"
+    red: "#E46876"
+    maroon: "#C34043"
+    peach: "#FFA066"
+    yellow: "#E6C384"
+    green: "#98BB6C"
+    teal: "#7AA89F"
+    sky: "#7FB4CA"
+    sapphire: "#7FB4CA"
+    blue: "#7E9CD8"
+    lavender: "#7E9CD8"
+    text: "#DCD7BA"
+    subtext1: "#C8C093"
+    subtext0: "#C8C093"
+    overlay2: "#54546D"
+    overlay1: "#54546D"
+    overlay0: "#363646"
+    surface2: "#363646"
+    surface1: "#2A2A37"
+    surface0: "#223249"
+    base: "#1F1F28"
+    mantle: "#16161D"
+    crust: "#16161D"
+
+lazygit:
+  activeBorderColor: "#7E9CD8"
+  inactiveBorderColor: "#54546D"
+  optionsTextColor: "#7E9CD8"
+  selectedLineBgColor: "#2A2A37"
+  cherryPickedCommitBgColor: "#363646"
+  cherryPickedCommitFgColor: "#7E9CD8"
+  unstagedChangesColor: "#E46876"
+  defaultFgColor: "#DCD7BA"
+  searchingActiveBorderColor: "#E6C384"
+  authorColor: "#957FB8"
+
+fzf:
+  bg_plus: "#2A2A37"
+  bg: "#1F1F28"
+  spinner: "#957FB8"
+  hl: "#E46876"
+  fg: "#DCD7BA"
+  header: "#E46876"
+  info: "#7E9CD8"
+  pointer: "#957FB8"
+  marker: "#98BB6C"
+  fg_plus: "#DCD7BA"
+  prompt: "#7E9CD8"
+  hl_plus: "#E46876"
+  selected_bg: "#363646"
+  border: "#54546D"
+  label: "#DCD7BA"

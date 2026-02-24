@@ -1,4 +1,5 @@
 name: Catppuccin Mocha
+variant: dark
 
 ghostty: "catppuccin-mocha"
 bat: "Catppuccin Mocha"

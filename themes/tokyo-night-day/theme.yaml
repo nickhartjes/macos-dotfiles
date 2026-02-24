@@ -1,0 +1,71 @@
+name: Tokyo Night Day
+variant: light
+
+ghostty: "Tokyo Night Day"
+bat: "tokyonight_day"
+btop: "tokyonight_day"
+k9s: "tokyonight-day"
+
+nvim:
+  plugin: "folke/tokyonight.nvim"
+  opts: 'style = "day"'
+  colorscheme: "tokyonight"
+
+starship:
+  palette_name: "tokyonight_day"
+  colors:
+    rosewater: "#f52a65"
+    flamingo: "#f52a65"
+    pink: "#9854f1"
+    mauve: "#9854f1"
+    red: "#f52a65"
+    maroon: "#f52a65"
+    peach: "#b15c00"
+    yellow: "#8c6c3e"
+    green: "#587539"
+    teal: "#118c74"
+    sky: "#007197"
+    sapphire: "#007197"
+    blue: "#2e7de9"
+    lavender: "#2e7de9"
+    text: "#3760bf"
+    subtext1: "#6172b0"
+    subtext0: "#6172b0"
+    overlay2: "#8990b3"
+    overlay1: "#848cb5"
+    overlay0: "#a8aecb"
+    surface2: "#c4c8da"
+    surface1: "#d5d6db"
+    surface0: "#d5d6db"
+    base: "#e1e2e7"
+    mantle: "#d5d6db"
+    crust: "#c4c8da"
+
+lazygit:
+  activeBorderColor: "#2e7de9"
+  inactiveBorderColor: "#a8aecb"
+  optionsTextColor: "#2e7de9"
+  selectedLineBgColor: "#d5d6db"
+  cherryPickedCommitBgColor: "#c4c8da"
+  cherryPickedCommitFgColor: "#2e7de9"
+  unstagedChangesColor: "#f52a65"
+  defaultFgColor: "#3760bf"
+  searchingActiveBorderColor: "#8c6c3e"
+  authorColor: "#9854f1"
+
+fzf:
+  bg_plus: "#d5d6db"
+  bg: "#e1e2e7"
+  spinner: "#9854f1"
+  hl: "#f52a65"
+  fg: "#3760bf"
+  header: "#f52a65"
+  info: "#2e7de9"
+  pointer: "#9854f1"
+  marker: "#587539"
+  fg_plus: "#3760bf"
+  prompt: "#2e7de9"
+  hl_plus: "#f52a65"
+  selected_bg: "#c4c8da"
+  border: "#848cb5"
+  label: "#3760bf"

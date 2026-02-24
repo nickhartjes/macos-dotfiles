@@ -103,12 +103,23 @@ theme name="":
         if [ -f "{{dotfiles_dir}}/themes/_active" ]; then \
             active=$(cat "{{dotfiles_dir}}/themes/_active"); \
         fi; \
-        selected=$(ls -d "{{dotfiles_dir}}"/themes/*/  2>/dev/null \
-            | xargs -I{} basename {} \
+        themes_dir="{{dotfiles_dir}}/themes"; \
+        selected=$( \
+            for dir in "$themes_dir"/*/; do \
+                slug=$(basename "$dir"); \
+                [ -f "$dir/theme.yaml" ] || continue; \
+                name=$(yq '.name' "$dir/theme.yaml"); \
+                variant=$(yq '.variant // "dark"' "$dir/theme.yaml"); \
+                printf "%s\t[%s]  %s\n" "$slug" "$variant" "$name"; \
+            done \
+            | sort -t'	' -k2,2 -k3,3 \
             | fzf --prompt="Theme: " \
                   --header="Current: $active" \
-                  --preview="yq '.name' {{dotfiles_dir}}/themes/{}/theme.yaml" \
-                  --preview-window=up:1); \
+                  --with-nth=2.. \
+                  --delimiter='\t' \
+                  --preview="yq '.name' $themes_dir/{1}/theme.yaml" \
+                  --preview-window=up:1 \
+            | cut -f1); \
         if [ -n "$selected" ]; then \
             sh "{{dotfiles_dir}}/scripts/theme.sh" "$selected"; \
         fi; \

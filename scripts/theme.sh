@@ -27,15 +27,34 @@ if [ -z "$THEME" ]; then
     echo "Usage: theme.sh <theme-name>"
     echo ""
     echo "Available themes:"
+    echo ""
+    echo "  Dark:"
     for dir in "$THEMES_DIR"/*/; do
         name=$(basename "$dir")
         if [ -f "$dir/theme.yaml" ]; then
+            variant=$(yq '.variant // "dark"' "$dir/theme.yaml")
+            [ "$variant" = "dark" ] || continue
             display=$(yq '.name' "$dir/theme.yaml")
             active=""
             if [ -f "$THEMES_DIR/_active" ] && [ "$(cat "$THEMES_DIR/_active")" = "$name" ]; then
                 active=" (active)"
             fi
-            echo "  $name — $display$active"
+            echo "    $name — $display$active"
+        fi
+    done
+    echo ""
+    echo "  Light:"
+    for dir in "$THEMES_DIR"/*/; do
+        name=$(basename "$dir")
+        if [ -f "$dir/theme.yaml" ]; then
+            variant=$(yq '.variant // "dark"' "$dir/theme.yaml")
+            [ "$variant" = "light" ] || continue
+            display=$(yq '.name' "$dir/theme.yaml")
+            active=""
+            if [ -f "$THEMES_DIR/_active" ] && [ "$(cat "$THEMES_DIR/_active")" = "$name" ]; then
+                active=" (active)"
+            fi
+            echo "    $name — $display$active"
         fi
     done
     exit 1

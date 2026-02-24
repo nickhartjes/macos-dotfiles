@@ -1,0 +1,19 @@
+---
+ENABLE_LINTERS:
+  - BASH_SHELLCHECK
+  - YAML_YAMLLINT
+  - MARKDOWN_MARKDOWNLINT
+
+BASH_SHELLCHECK_FILE_EXTENSIONS:
+  - .sh
+
+YAML_YAMLLINT_RULES:
+  extends: default
+  rules:
+    line-length:
+      max: 200
+    truthy: disable
+
+FLAVOR_SUGGESTIONS: false
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false

@@ -1,0 +1,36 @@
+MegaLinter can help you to define the same linter configuration locally
+
+INSTRUCTIONS
+
+- Copy the content of IDE-config folder at the root of your repository
+- if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions
+- If not, you can install extensions manually using the following links.
+
+IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
+
+shellcheck (BASH)
+  - emacs:
+    - flycheck: https://github.com/flycheck/flycheck
+    - flymake-shellcheck: https://github.com/federicotdn/flymake-shellcheck
+  - sublime:
+    - SublimeLinter-shellcheck: https://github.com/SublimeLinter/SublimeLinter-shellcheck
+  - vim:
+    - ale: https://github.com/w0rp/ale
+    - neomake: https://github.com/neomake/neomake
+    - syntastic: https://github.com/scrooloose/syntastic
+  - vscode:
+    - vscode-shellcheck: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
+
+markdownlint (MARKDOWN)
+  - sublime:
+    - SublimeLinter-contrib-markdownlint: https://packagecontrol.io/packages/SublimeLinter-contrib-markdownlint
+  - vim:
+    - coc-markdownlint: https://github.com/fannheyward/coc-markdownlint
+  - vscode:
+    - vscode-markdownlint: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
+
+yamllint (YAML)
+  - emacs:
+    - flycheck: https://github.com/krzysztof-magosa/flycheck-yamllint
+  - vim:
+    - ale: https://github.com/w0rp/ale

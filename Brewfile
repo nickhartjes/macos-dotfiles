@@ -61,7 +61,7 @@ brew "pgcli"          # PostgreSQL CLI with autocompletion
 
 # ─── IDEs & Editors ─────────────────────────────────────
 cask "intellij-idea"       # JetBrains Java/Kotlin IDE
-cask "intellij-idea-ce"    # JetBrains Community Edition (free)
+# cask "intellij-idea-ce"    # JetBrains Community Edition (free)
 cask "visual-studio-code"  # Microsoft code editor
 cask "zed"                 # Fast collaborative editor
 
@@ -96,7 +96,8 @@ cask "rectangle"      # Window management via keyboard
 
 # ─── Knowledge & Notes ──────────────────────────────────
 cask "anytype"        # Local-first knowledge base
-cask "obsidian"     # Markdown knowledge base
+cask "archi"          # ArchiMate modelling tool
+cask "obsidian"       # Markdown knowledge base
 
 # ─── DevOps ─────────────────────────────────────────────
 cask "openlens"       # Kubernetes IDE

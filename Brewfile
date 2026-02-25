@@ -61,15 +61,27 @@ brew "pgcli"          # PostgreSQL CLI with autocompletion
 
 # ─── IDEs & Editors ─────────────────────────────────────
 cask "intellij-idea"       # JetBrains Java/Kotlin IDE
+cask "intellij-idea-ce"    # JetBrains Community Edition (free)
 cask "visual-studio-code"  # Microsoft code editor
 cask "zed"                 # Fast collaborative editor
 
 # ─── Terminal ───────────────────────────────────────────
+cask "alacritty"      # OpenGL terminal emulator
 cask "ghostty"        # GPU-accelerated terminal
+cask "iterm2"         # Feature-rich terminal for macOS
+cask "kitty"          # GPU-based terminal emulator
+cask "warp"           # AI-powered modern terminal
+cask "wezterm"        # GPU-accelerated cross-platform terminal
 
 # ─── Browsers ───────────────────────────────────────────
+cask "arc"            # Modern Chromium browser with workspaces
+cask "brave-browser"  # Privacy-focused Chromium browser
+cask "chromium"       # Open-source web browser
 cask "firefox"        # Mozilla web browser
 cask "google-chrome"  # Google web browser
+cask "microsoft-edge" # Chromium-based browser with AI integrations
+cask "orion"          # Lightweight WebKit browser by Kagi
+cask "vivaldi"        # Highly customizable Chromium browser
 
 # ─── Communication ──────────────────────────────────────
 cask "signal"         # Encrypted messaging
@@ -99,9 +111,14 @@ brew "opencode"       # AI coding agent TUI
 
 # ─── Media ──────────────────────────────────────────────
 cask "spotify"        # Music streaming
+cask "vlc"            # Universal media player
 
 # ─── Fonts ──────────────────────────────────────────────
+cask "font-fira-code-nerd-font"       # Ligature-rich dev font
+cask "font-hack-nerd-font"            # Clean, readable dev font
 cask "font-jetbrains-mono-nerd-font"  # Dev font with icons
+cask "font-meslo-lg-nerd-font"        # Customized Menlo font
+cask "font-monaspace-nerd-font"       # GitHub's texture healing font
 
 # ─── Mac App Store (examples, uncomment as needed) ──────
 # mas "Xcode", id: 497799835

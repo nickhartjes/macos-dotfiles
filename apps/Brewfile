@@ -12,18 +12,26 @@ brew "stow"           # Symlink farm manager for dotfiles
 # ─── Core CLI ────────────────────────────────────────────
 brew "bat"            # cat with syntax highlighting
 brew "curl"           # URL data transfer tool
+brew "difftastic"     # Structural diff that understands syntax
 brew "direnv"         # Per-directory environment variables
+brew "duf"            # Disk free overview (better df)
+brew "dust"           # Visual disk usage (better du)
+brew "entr"           # Run commands when files change
 brew "eza"            # Modern ls replacement
 brew "fd"             # Fast file finder
 brew "fzf"            # Fuzzy finder
 brew "gh"             # GitHub CLI
+brew "glow"           # Render markdown in the terminal
 brew "httpie"         # User-friendly HTTP client
+brew "hyperfine"      # CLI benchmarking tool
 brew "jq"             # JSON processor
 brew "neovim"         # Vim-based text editor
 brew "ripgrep"        # Fast recursive search (rg)
+brew "sd"             # Simple sed replacement
 brew "shellcheck"     # Shell script linter
 brew "starship"       # Cross-shell prompt
 brew "tldr"           # Simplified man pages
+brew "trash"          # Safe rm — moves to trash
 brew "tree"           # Directory tree viewer
 brew "wget"           # File downloader
 brew "yq"             # YAML processor
@@ -40,6 +48,7 @@ brew "taproom"        # Interactive TUI for Homebrew
 # ─── Dev Tools ───────────────────────────────────────────
 brew "bun"            # Fast JavaScript runtime and toolkit
 brew "gradle"         # JVM build tool
+brew "delta"          # Better git diffs with syntax highlighting
 brew "lazygit"        # Terminal UI for git
 brew "pnpm"           # Fast Node.js package manager
 

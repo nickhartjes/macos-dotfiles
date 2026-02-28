@@ -27,7 +27,7 @@ just install
 That's it. Your Mac is set up. Restart your terminal to see the changes.
 
 > **Not a fresh Mac?** If you already have config files (like `~/.zshrc` or `~/.gitconfig`), stow will refuse to overwrite them. Back up and remove the existing files first, then run `just stow`. Your old configs won't be lost — just move them aside (e.g. `mv ~/.zshrc ~/.zshrc.backup`).
-
+>
 > **Optional:** To set up git identity, GPG keys, and AWS credentials from Bitwarden, see [Secrets Setup](#secrets-setup) below.
 
 ## Day-to-Day Commands
@@ -173,7 +173,7 @@ Create a login item named **`dotfiles`** in Bitwarden with these custom fields:
 | Field | Value | Required |
 |---|---|---|
 | `GIT_USER_NAME` | Your Name | Yes |
-| `GIT_USER_EMAIL` | you@example.com | Yes |
+| `GIT_USER_EMAIL` | `you@example.com` | Yes |
 | `GIT_SIGNING_KEY` | Your GPG key ID | Yes |
 | `AWS_PROFILE_TST` | TST profile name | Yes |
 | `AWS_ACCESS_KEY_ID_TST` | TST access key | Yes |

@@ -18,8 +18,8 @@ Open Terminal on a fresh Mac and run:
 
 ```sh
 # Download and run
-git clone https://github.com/<your-user>/homebrew.git ~/.homebrew
-cd ~/.homebrew
+git clone https://github.com/<your-user>/macos-dotfiles.git ~/.macos-dotfiles
+cd ~/.macos-dotfiles
 sh bootstrap.sh
 just install
 ```

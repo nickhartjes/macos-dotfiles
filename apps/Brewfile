@@ -1,9 +1,7 @@
-# Taps
-tap "homebrew/bundle"
-
 # ─── Bootstrap (required for dotfiles setup) ───────────
 brew "bitwarden-cli"  # Bitwarden password manager CLI
 brew "git"            # Distributed version control
+brew "git-lfs"        # Git extension for large files
 brew "gnupg"          # GPG encryption and signing
 brew "just"           # Command runner (like make)
 brew "mise"           # Polyglot runtime manager
@@ -47,10 +45,11 @@ brew "taproom"        # Interactive TUI for Homebrew
 
 # ─── Dev Tools ───────────────────────────────────────────
 brew "bun"            # Fast JavaScript runtime and toolkit
-brew "gradle"         # JVM build tool
 brew "delta"          # Better git diffs with syntax highlighting
+brew "gradle"         # JVM build tool
 brew "lazygit"        # Terminal UI for git
 brew "pnpm"           # Fast Node.js package manager
+brew "tig"            # Text interface for git repositories
 
 # ─── Containers & Cloud ─────────────────────────────────
 brew "argocd"         # GitOps continuous delivery CLI
@@ -60,32 +59,35 @@ brew "docker"         # Container engine
 brew "docker-compose" # Multi-container orchestration
 brew "helm"           # Kubernetes package manager
 brew "k9s"            # Kubernetes TUI
-brew "kubectl"        # Kubernetes CLI
+brew "kubernetes-cli"  # Kubernetes CLI (kubectl)
 brew "kubectx"        # Switch k8s contexts/namespaces
 brew "kustomize"      # Kubernetes manifest customization
 brew "opentofu"       # Infrastructure as code (Terraform fork)
 
+# ─── Network ───────────────────────────────────────────
+brew "nmap"           # Network scanning and discovery tool
+
 # ─── Database ────────────────────────────────────────────
 brew "pgcli"          # PostgreSQL CLI with autocompletion
 
-# ─── IDEs & Editors ─────────────────────────────────────
+# ─── IDEs & Editors (primary: IntelliJ IDEA) ──────────
 cask "intellij-idea"       # JetBrains Java/Kotlin IDE
 # cask "intellij-idea-ce"    # JetBrains Community Edition (free)
 cask "visual-studio-code"  # Microsoft code editor
 cask "zed"                 # Fast collaborative editor
 
-# ─── Terminal ───────────────────────────────────────────
-cask "alacritty"      # OpenGL terminal emulator
+# ─── Terminal (primary: Ghostty) ──────────────────────
 cask "ghostty"        # GPU-accelerated terminal
-cask "iterm2"         # Feature-rich terminal for macOS
-cask "kitty"          # GPU-based terminal emulator
-cask "warp"           # AI-powered modern terminal
-cask "wezterm"        # GPU-accelerated cross-platform terminal
+# cask "alacritty"      # OpenGL terminal emulator
+# cask "iterm2"         # Feature-rich terminal for macOS
+# cask "kitty"          # GPU-based terminal emulator
+# cask "warp"           # AI-powered modern terminal
+# cask "wezterm"        # GPU-accelerated cross-platform terminal
 
-# ─── Browsers ───────────────────────────────────────────
+# ─── Browsers (primary: Chromium) ─────────────────────
+cask "chromium"       # Open-source web browser
 cask "arc"            # Modern Chromium browser with workspaces
 cask "brave-browser"  # Privacy-focused Chromium browser
-cask "chromium"       # Open-source web browser
 cask "firefox"        # Mozilla web browser
 cask "google-chrome"  # Google web browser
 cask "microsoft-edge" # Chromium-based browser with AI integrations
@@ -100,6 +102,7 @@ cask "telegram"       # Cloud-based messaging
 # ─── Productivity ───────────────────────────────────────
 # cask "aerospace"    # Tiling window manager
 cask "bitwarden"      # Password manager
+cask "displaylink"    # External monitor driver for DisplayLink docks
 cask "raycast"        # Launcher and productivity tool
 cask "rectangle"      # Window management via keyboard
 

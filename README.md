@@ -120,7 +120,7 @@ just defaults     # Re-apply macOS preferences (same as 'just macos')
 <details>
 <summary><strong>CLI Tools</strong> (click to expand)</summary>
 
-bat, bitwarden-cli, btop, bun, curl, direnv, eza, fastfetch, fd, fish, fzf, gh, git, gnupg, gradle, httpie, jq, just, k9s, kubectl, kubectx, lazygit, mise, neovim, pnpm, procs, ripgrep, shellcheck, starship, stow, taproom, tldr, tree, wget, yq, zoxide
+bat, bitwarden-cli, btop, bun, curl, delta, difftastic, direnv, duf, dust, entr, eza, fastfetch, fd, fish, fzf, gh, git, git-lfs, glow, gnupg, gradle, httpie, hyperfine, jq, just, k9s, kubernetes-cli, kubectx, lazygit, mise, neovim, nmap, pnpm, procs, ripgrep, sd, shellcheck, starship, stow, taproom, tig, tldr, trash, tree, wget, yq, zoxide
 
 **Containers & Cloud:** argocd, awscli, colima, docker, docker-compose, helm, kustomize, opentofu
 
@@ -135,13 +135,13 @@ bat, bitwarden-cli, btop, bun, curl, direnv, eza, fastfetch, fd, fish, fzf, gh, 
 
 **Editors:** IntelliJ IDEA, VS Code, Zed
 
-**Terminals:** Alacritty, Ghostty, iTerm2, Kitty, Warp, WezTerm
+**Terminals (primary: Ghostty):** Ghostty (+Alacritty, iTerm2, Kitty, Warp, WezTerm commented out)
 
-**Browsers:** Arc, Brave, Chromium, Firefox, Chrome, Edge, Orion, Vivaldi
+**Browsers (primary: Chromium):** Chromium, Arc, Brave, Firefox, Chrome, Edge, Orion, Vivaldi
 
 **Communication:** Signal, Slack, Telegram
 
-**Productivity:** Bitwarden, Raycast, Rectangle
+**Productivity:** Bitwarden, DisplayLink, Raycast, Rectangle
 
 **Knowledge:** Anytype, Archi, Obsidian
 

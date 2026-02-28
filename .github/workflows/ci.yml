@@ -31,7 +31,7 @@ jobs:
       - name: Check stow package structure
         run: |
           errors=0
-          for pkg in dotfiles/*/; do
+          for pkg in dotfiles/stow/*/; do
             name=$(basename "$pkg")
             count=$(find "$pkg" -type f | wc -l)
             if [ "$count" -eq 0 ]; then
@@ -57,5 +57,5 @@ jobs:
               echo "::error::Invalid Brewfile line: $line"
               exit 1
             fi
-          done < Brewfile
+          done < apps/Brewfile
           echo "✓ Brewfile syntax valid"

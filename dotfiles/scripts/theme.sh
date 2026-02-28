@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 THEMES_DIR="$REPO_DIR/themes"
-DOTFILES_DIR="$REPO_DIR/dotfiles"
+STOW_DIR="$REPO_DIR/stow"
 
 # ─── Portable sed -i ────────────────────────────────────────
 sedi() {
@@ -75,7 +75,7 @@ echo "Switching to $DISPLAY_NAME..."
 apply_ghostty() {
     local value
     value=$(yq '.ghostty' "$THEME_YAML")
-    local config="$DOTFILES_DIR/ghostty/.config/ghostty/config"
+    local config="$STOW_DIR/ghostty/.config/ghostty/config"
     sedi "s/^theme = .*/theme = $value/" "$config"
     echo "  ✓ Ghostty"
 }
@@ -84,7 +84,7 @@ apply_ghostty() {
 apply_bat() {
     local value
     value=$(yq '.bat' "$THEME_YAML")
-    local config="$DOTFILES_DIR/bat/.config/bat/config"
+    local config="$STOW_DIR/bat/.config/bat/config"
     sedi "s/^--theme=.*/--theme=\"$value\"/" "$config"
     echo "  ✓ bat"
 }
@@ -95,7 +95,7 @@ apply_nvim() {
     plugin=$(yq '.nvim.plugin' "$THEME_YAML")
     opts=$(yq '.nvim.opts' "$THEME_YAML")
     colorscheme=$(yq '.nvim.colorscheme' "$THEME_YAML")
-    local config="$DOTFILES_DIR/nvim/.config/nvim/lua/plugins/colorscheme.lua"
+    local config="$STOW_DIR/nvim/.config/nvim/lua/plugins/colorscheme.lua"
     cat > "$config" <<NVIM_EOF
 return {
   {
@@ -115,8 +115,8 @@ NVIM_EOF
 apply_btop() {
     local value
     value=$(yq '.btop' "$THEME_YAML")
-    local themes_dest="$DOTFILES_DIR/btop/.config/btop/themes"
-    local config="$DOTFILES_DIR/btop/.config/btop/btop.conf"
+    local themes_dest="$STOW_DIR/btop/.config/btop/themes"
+    local config="$STOW_DIR/btop/.config/btop/btop.conf"
 
     # Clear old theme files, copy new one
     rm -f "$themes_dest"/*.theme
@@ -131,8 +131,8 @@ apply_btop() {
 apply_k9s() {
     local value
     value=$(yq '.k9s' "$THEME_YAML")
-    local skins_dest="$DOTFILES_DIR/k9s/.config/k9s/skins"
-    local config="$DOTFILES_DIR/k9s/.config/k9s/config.yaml"
+    local skins_dest="$STOW_DIR/k9s/.config/k9s/skins"
+    local config="$STOW_DIR/k9s/.config/k9s/config.yaml"
 
     # Clear old skin files, copy new one
     rm -f "$skins_dest"/*.yaml
@@ -145,7 +145,7 @@ apply_k9s() {
 
 # ─── lazygit ─────────────────────────────────────────────────
 apply_lazygit() {
-    local config="$DOTFILES_DIR/lazygit/.config/lazygit/config.yml"
+    local config="$STOW_DIR/lazygit/.config/lazygit/config.yml"
 
     local activeBorderColor inactiveBorderColor optionsTextColor selectedLineBgColor
     local cherryPickedCommitBgColor cherryPickedCommitFgColor unstagedChangesColor
@@ -194,7 +194,7 @@ LAZYGIT_EOF
 
 # ─── Starship ───────────────────────────────────────────────
 apply_starship() {
-    local config="$DOTFILES_DIR/starship/.config/starship.toml"
+    local config="$STOW_DIR/starship/.config/starship.toml"
     local palette_name
     palette_name=$(yq '.starship.palette_name' "$THEME_YAML")
 
@@ -244,7 +244,7 @@ apply_fzf() {
     local c5="  --color=border:${border},label:${label}"
 
     # ── zsh ──
-    local zshrc="$DOTFILES_DIR/zsh/.zshrc"
+    local zshrc="$STOW_DIR/zsh/.zshrc"
     awk -v c1="$c1" -v c2="$c2" -v c3="$c3" -v c4="$c4" -v c5="$c5" '
         /^[[:space:]]*--color=/ && !replaced {
             print c1; print c2; print c3; print c4; print c5
@@ -256,7 +256,7 @@ apply_fzf() {
     mv "${zshrc}.tmp" "$zshrc"
 
     # ── fish ──
-    local fish_fzf="$DOTFILES_DIR/fish/.config/fish/conf.d/fzf.fish"
+    local fish_fzf="$STOW_DIR/fish/.config/fish/conf.d/fzf.fish"
     awk -v c1="$c1 \\\\" -v c2="$c2 \\\\" -v c3="$c3 \\\\" -v c4="$c4 \\\\" -v c5="$c5 \\\\" '
         /^[[:space:]]*--color=/ && !replaced {
             print c1; print c2; print c3; print c4; print c5

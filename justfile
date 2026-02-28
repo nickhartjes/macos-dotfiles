@@ -115,6 +115,30 @@ doctor:
         fi; \
     done; \
     [ "$all_linked" = true ] && ok "All stow packages linked"
+    # FileVault (disk encryption)
+    if command -v fdesetup >/dev/null 2>&1; then \
+        if fdesetup isactive >/dev/null 2>&1; then \
+            ok "FileVault is enabled"; \
+        else \
+            fail "FileVault is not enabled — enable in System Settings > Privacy & Security"; \
+        fi; \
+    fi
+    # Firewall
+    if [ -x /usr/libexec/ApplicationFirewall/socketfilterfw ]; then \
+        if sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate 2>/dev/null | grep -q enabled; then \
+            ok "Firewall is enabled"; \
+        else \
+            fail "Firewall is not enabled — run 'just macos' to enable"; \
+        fi; \
+    fi
+    # Software updates
+    if command -v softwareupdate >/dev/null 2>&1; then \
+        if softwareupdate -l 2>&1 | grep -q "No new software available"; then \
+            ok "macOS is up to date"; \
+        else \
+            fail "Software updates available — run 'softwareupdate -ia'"; \
+        fi; \
+    fi
 
 # Switch terminal theme across all tools
 theme name="":

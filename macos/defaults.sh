@@ -67,6 +67,23 @@ defaults write com.apple.screencapture type -string "png"
 # Show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+# ─── Firewall ──────────────────────────────────────────────
+# Enable firewall
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on >/dev/null 2>&1 || true
+
+# ─── Screensaver ───────────────────────────────────────────
+# Require password within 5 seconds of screensaver
+defaults write com.apple.screensaver askForPasswordDelay -int 5
+
+# Start screensaver after 5 minutes of idle
+defaults -currentHost write com.apple.screensaver idleTime -int 300
+
+# ─── SSH ───────────────────────────────────────────────────
+# Ensure ~/.ssh exists with secure permissions
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+find "$HOME/.ssh" -type f -exec chmod 600 {} \; 2>/dev/null || true
+
 # ─── Apply changes ───────────────────────────────────────
 killall Finder 2>/dev/null || true
 killall Dock 2>/dev/null || true

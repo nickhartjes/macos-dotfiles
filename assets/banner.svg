@@ -2,6 +2,7 @@
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1a1b26"/>
+      <stop offset="50%" stop-color="#1e2030"/>
       <stop offset="100%" stop-color="#16161e"/>
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -9,52 +10,73 @@
       <stop offset="50%" stop-color="#bb9af7"/>
       <stop offset="100%" stop-color="#7dcfff"/>
     </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7aa2f7" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#bb9af7" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#7dcfff" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="titleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
   </defs>
 
   <!-- Background -->
   <rect width="900" height="300" rx="12" fill="url(#bg)"/>
 
+  <!-- Ambient glow orbs -->
+  <circle cx="250" cy="150" r="120" fill="#7aa2f7" opacity="0.03" filter="url(#softGlow)"/>
+  <circle cx="650" cy="150" r="120" fill="#bb9af7" opacity="0.03" filter="url(#softGlow)"/>
+
   <!-- Decorative border -->
-  <rect x="2" y="2" width="896" height="296" rx="11" fill="none" stroke="url(#accent)" stroke-width="1" opacity="0.3"/>
+  <rect x="1.5" y="1.5" width="897" height="297" rx="11" fill="none" stroke="url(#accent)" stroke-width="1" opacity="0.2"/>
+
+  <!-- Terminal window title bar -->
+  <rect x="0" y="0" width="900" height="46" rx="12" fill="#1a1b26" opacity="0.6"/>
+  <rect x="0" y="12" width="900" height="34" fill="#1a1b26" opacity="0.6"/>
 
   <!-- Terminal dots -->
-  <circle cx="36" cy="28" r="7" fill="#f7768e"/>
-  <circle cx="58" cy="28" r="7" fill="#e0af68"/>
-  <circle cx="80" cy="28" r="7" fill="#9ece6a"/>
+  <circle cx="32" cy="23" r="6.5" fill="#f7768e"/>
+  <circle cx="52" cy="23" r="6.5" fill="#e0af68"/>
+  <circle cx="72" cy="23" r="6.5" fill="#9ece6a"/>
 
-  <!-- Terminal top bar line -->
-  <line x1="20" y1="46" x2="880" y2="46" stroke="#3b4261" stroke-width="1"/>
+  <!-- Window title -->
+  <text x="450" y="28" text-anchor="middle" font-family="'SF Mono', 'JetBrains Mono', monospace" font-size="13" fill="#565f89">~/.macos-dotfiles</text>
 
-  <!-- Apple logo (simplified) -->
-  <text x="450" y="120" text-anchor="middle" font-family="monospace" font-size="48" fill="#7aa2f7" opacity="0.15"></text>
+  <!-- Title bar separator -->
+  <line x1="16" y1="46" x2="884" y2="46" stroke="#3b4261" stroke-width="0.5"/>
 
-  <!-- Title -->
-  <text x="450" y="145" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="42" fill="url(#accent)">macOS Dotfiles</text>
+  <!-- Main title with glow -->
+  <text x="450" y="128" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="44" fill="url(#glow)" filter="url(#softGlow)">macOS Setup</text>
+  <text x="450" y="128" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="44" fill="url(#accent)">macOS Setup</text>
 
   <!-- Subtitle -->
-  <text x="450" y="180" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="16" fill="#a9b1d6">Stow-managed dotfiles &amp; Homebrew setup for Apple Silicon</text>
+  <text x="450" y="162" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="15" fill="#a9b1d6" opacity="0.8">Apps &#183; Dotfiles &#183; Preferences</text>
 
-  <!-- Tags -->
-  <!-- Tokyo Night tag -->
-  <rect x="195" y="210" width="120" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
-  <text x="255" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#bb9af7">Tokyo Night</text>
+  <!-- Tags row -->
+  <rect x="148" y="192" width="110" height="28" rx="14" fill="#292e42" stroke="#3b4261" stroke-width="0.5"/>
+  <text x="203" y="211" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="11" fill="#bb9af7">Tokyo Night</text>
 
-  <!-- Homebrew tag -->
-  <rect x="330" y="210" width="110" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
-  <text x="385" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#9ece6a">Homebrew</text>
+  <rect x="272" y="192" width="100" height="28" rx="14" fill="#292e42" stroke="#3b4261" stroke-width="0.5"/>
+  <text x="322" y="211" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="11" fill="#9ece6a">Homebrew</text>
 
-  <!-- GNU Stow tag -->
-  <rect x="455" y="210" width="110" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
-  <text x="510" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#7dcfff">GNU Stow</text>
+  <rect x="386" y="192" width="100" height="28" rx="14" fill="#292e42" stroke="#3b4261" stroke-width="0.5"/>
+  <text x="436" y="211" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="11" fill="#7dcfff">GNU Stow</text>
 
-  <!-- Bitwarden tag -->
-  <rect x="580" y="210" width="120" height="30" rx="6" fill="#292e42" stroke="#3b4261" stroke-width="1"/>
-  <text x="640" y="230" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="12" fill="#7aa2f7">Bitwarden</text>
+  <rect x="500" y="192" width="110" height="28" rx="14" fill="#292e42" stroke="#3b4261" stroke-width="0.5"/>
+  <text x="555" y="211" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="11" fill="#7aa2f7">Bitwarden</text>
+
+  <rect x="624" y="192" width="130" height="28" rx="14" fill="#292e42" stroke="#3b4261" stroke-width="0.5"/>
+  <text x="689" y="211" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="11" fill="#e0af68">Apple Silicon</text>
 
   <!-- Prompt line -->
-  <text x="36" y="275" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="14" fill="#565f89">
-    <tspan fill="#9ece6a">❯</tspan>
-    <tspan fill="#a9b1d6"> sh bootstrap.sh</tspan>
-    <tspan fill="#565f89" font-size="14"> █</tspan>
+  <text x="32" y="268" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-size="14" fill="#565f89">
+    <tspan fill="#9ece6a">&#10095;</tspan>
+    <tspan fill="#7aa2f7"> just</tspan>
+    <tspan fill="#a9b1d6"> install</tspan>
+    <tspan fill="#565f89"> &#9608;</tspan>
   </text>
 </svg>

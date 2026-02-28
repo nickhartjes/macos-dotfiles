@@ -112,7 +112,6 @@ just init         # Set up secrets from Bitwarden
 just repo-sync    # Clone/fetch git repos from repos.yaml
 just dump         # Export currently installed apps to Brewfile
 just lint         # Run linters (shellcheck, yamllint, markdownlint)
-just defaults     # Re-apply macOS preferences (same as 'just macos')
 ```
 
 ## What Gets Installed
@@ -120,13 +119,21 @@ just defaults     # Re-apply macOS preferences (same as 'just macos')
 <details>
 <summary><strong>CLI Tools</strong> (click to expand)</summary>
 
-bat, bitwarden-cli, btop, bun, curl, delta, difftastic, direnv, duf, dust, entr, eza, fastfetch, fd, fish, fzf, gh, git, git-lfs, glow, gnupg, gradle, httpie, hyperfine, jq, just, k9s, kubernetes-cli, kubectx, lazygit, mise, neovim, nmap, pnpm, procs, ripgrep, sd, shellcheck, starship, stow, taproom, tig, tldr, trash, tree, wget, yq, zoxide
+**Core:** bat, curl, difftastic, direnv, duf, dust, entr, eza, fd, fzf, gh, glow, httpie, hyperfine, jq, ripgrep, sd, shellcheck, starship, tldr, trash, tree, wget, yq, zoxide
 
-**Containers & Cloud:** argocd, awscli, colima, docker, docker-compose, helm, kustomize, opentofu
+**Shell & Plugins:** antidote, btop, fastfetch, fish, procs, taproom
+
+**Dev Tools:** bun, delta, gradle, lazygit, pnpm, tig
+
+**Containers & Cloud:** argocd, awscli, colima, docker, docker-compose, helm, k9s, kubernetes-cli, kubectx, kustomize, opentofu
+
+**Network:** nmap
 
 **Database:** pgcli
 
 **AI:** llmfit, opencode
+
+**Bootstrap:** bitwarden-cli, git, git-lfs, gnupg, just, mise, neovim, stow
 
 </details>
 

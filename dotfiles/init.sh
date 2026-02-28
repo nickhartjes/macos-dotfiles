@@ -64,7 +64,7 @@ else
     -e "s|\${GIT_USER_NAME}|$GIT_USER_NAME|" \
     -e "s|\${GIT_USER_EMAIL}|$GIT_USER_EMAIL|" \
     -e "s|\${GIT_SIGNING_KEY}|$GIT_SIGNING_KEY|" \
-    "$DOTFILES_DIR/dotfiles/git/.gitconfig.local.tpl" > "$HOME/.gitconfig.local"
+    "$DOTFILES_DIR/stow/git/.gitconfig.local.tpl" > "$HOME/.gitconfig.local"
 
   ok "Created ~/.gitconfig.local"
 fi
